@@ -46,9 +46,8 @@ override method destreza() = super() * 2
 
 class Mision{
 
-  var dificultad
   var tipoMision = MisionComun
-  
+
   method realizar(){
     self.verificarPuedeRealizarse()
     self.repartirCopas()
@@ -78,6 +77,7 @@ class Mision{
 
 class MisionIndividual inherits Mision{
   var personaje
+  var dificultad
   method copasEnJuego() = 2 * dificultad
 
   override method tieneEstrategia() = personaje.tieneEstrategia()

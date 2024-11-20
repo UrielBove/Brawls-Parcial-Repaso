@@ -15,7 +15,7 @@ describe "tests de misiones" {
   const mision2 = new MisionIndividual(dificultad = 2, tipoMision = new MisionComun(),personaje = arqueroMalo)
   const arqueroPro = new Arquero(agilidad=2, rango=200, copas = 30)
   const arqueroPro2 = new Arquero(agilidad=2, rango=120, copas = 30)
-  const mision3 = new MisionPorEquipo(dificultad=2, tipoMision = new MisionComun(), personajes = [arqueroPro2, arqueroPro])
+  const mision3 = new MisionPorEquipo(tipoMision = new MisionComun(), personajes = [arqueroPro2, arqueroPro])
   test "Mision individual superada suma puntos al personaje" {
     //Destreza de arquero1 supera la dificultad de mision por lo q suma copas
     //copas en juego 2 * dificultad. 4 copas le suma 

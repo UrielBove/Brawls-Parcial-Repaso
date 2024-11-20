@@ -1,9 +1,35 @@
-import example.pepita
+import example.*
 
 describe "group of tests for pepita" {
 
   test "pepita has initial energy" {
     assert.equals(100, pepita.energy())
+  }
+
+}
+
+describe "tests de misiones" {
+  const arquero1 = new Arquero(agilidad=2, rango=3, copas = 30)//copas >= 10 Se puede realizar
+  const mision1 = new MisionIndividual(dificultad = 2, tipoMision = new MisionComun(),personaje = arquero1)
+  const arqueroMalo = new Arquero(agilidad=1, rango=1, copas = 30)
+  const mision2 = new MisionIndividual(dificultad = 2, tipoMision = new MisionComun(),personaje = arqueroMalo)
+  const arqueroPro = new Arquero(agilidad=2, rango=200, copas = 30)
+  const arqueroPro2 = new Arquero(agilidad=2, rango=120, copas = 30)
+  const mision3 = new MisionPorEquipo(dificultad=2, tipoMision = new MisionComun(), personajes = [arqueroPro2, arqueroPro])
+  test "Mision individual superada suma puntos al personaje" {
+    //Destreza de arquero1 supera la dificultad de mision por lo q suma copas
+    //copas en juego 2 * dificultad. 4 copas le suma 
+    mision1.realizar()
+    assert.equals(34, arquero1.copas())
+  }
+
+  test "Mision individual no puede superarse"{
+    
+    assert.notThat(mision2.esSuperada())
+  }
+   test "Mision por equipo puede superarse"{
+    
+    assert.that(mision3.esSuperada())
   }
 
 }
